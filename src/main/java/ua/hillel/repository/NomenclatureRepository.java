@@ -14,12 +14,12 @@ import static java.util.Objects.nonNull;
 
 public class NomenclatureRepository {
 
-    public List<Nomenclature> findNomenclatureById(int nomenclature_id) {
+    public List<Nomenclature> findNomenclatureById(int nomenclatureId) {
 
         Connection connection = ConnectionProvider.provideConnection();
         if (nonNull(connection)) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(provideQueryFindNomenclatureById())) {
-                preparedStatement.setInt(1, nomenclature_id);
+                preparedStatement.setInt(1, nomenclatureId);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 List result = new ArrayList();
                 while (resultSet.next()) {
@@ -37,7 +37,10 @@ public class NomenclatureRepository {
     }
 
     private String provideQueryFindNomenclatureById() {
-        return "select * from nomenclature where nomenclature_id = ?";
+        return """
+                SELECT *
+                FROM   nomenclature
+                WHERE  nomenclature_id = ?""";
     }
 
 }

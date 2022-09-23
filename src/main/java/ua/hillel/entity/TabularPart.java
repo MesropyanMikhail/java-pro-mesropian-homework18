@@ -10,12 +10,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TabularPart {
-    private int tabular_part_id;
-    private List<Nomenclature> nomenclature_id;
+    private int tabularPartId;
+    private List<Nomenclature> nomenclatureId;
     private double quantity;
 
-    public TabularPart(int tabular_part_id, double quantity) {
-        this.tabular_part_id = tabular_part_id;
+    public TabularPart(int tabularPartId, double quantity) {
+        this.tabularPartId = tabularPartId;
         this.quantity = quantity;
     }
 }

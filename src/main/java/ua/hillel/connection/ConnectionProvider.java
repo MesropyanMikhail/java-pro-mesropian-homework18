@@ -12,7 +12,8 @@ public class ConnectionProvider {
     public static Connection provideConnection() {
         Properties properties = new Properties();
         Connection connection;
-
+        /*properties.put("user", "root");
+        properties.put("password", "Chamelion40");*/
         try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/db.properties")) {
             properties.load(fileInputStream);
         } catch (IOException e) {

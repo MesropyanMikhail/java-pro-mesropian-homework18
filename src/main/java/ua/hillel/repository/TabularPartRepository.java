@@ -14,12 +14,12 @@ import static java.util.Objects.nonNull;
 
 public class TabularPartRepository {
 
-    public List<TabularPart> findTabularPartById(int tabular_part_id) {
+    public List<TabularPart> findTabularPartById(int tabularPartId) {
 
         Connection connection = ConnectionProvider.provideConnection();
         if (nonNull(connection)) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(provideQueryFindTabularPartById())) {
-                preparedStatement.setInt(1, tabular_part_id);
+                preparedStatement.setInt(1, tabularPartId);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 List result = new ArrayList();
                 while (resultSet.next()) {
@@ -37,7 +37,10 @@ public class TabularPartRepository {
     }
 
     private String provideQueryFindTabularPartById() {
-        return "select * from tabular_part where tabular_part_id = ?";
+        return """
+                SELECT *
+                FROM   tabular_part
+                WHERE  tabular_part_id = ?""";
     }
 
 }
